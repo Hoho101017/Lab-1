@@ -9,33 +9,55 @@ void main (){
   };
   
   double totalPrice=0.0;
-
+  int? quantity;
   print(pizzaInfo);
   print("Please select a size: small, medium, or large:");
   String size=stdin.readLineSync()!;
   bool exit=true;
-
+  
   while(exit==true){
 
  
 
   switch(size){
     case 'small':
-       print("How many pizzas would you like to order?");
-      double quantity=double.parse(stdin.readLineSync()!);
-      totalPrice = pizzaInfo['small']! * quantity;
+       
+
+while (quantity == null) {
+  print("How many pizzas would you like to order?");
+  quantity = int.tryParse(stdin.readLineSync()!);
+
+  if (quantity == null) {
+    print("Please enter an integer.");
+  }
+}
       exit=false;
       break;
     case 'medium':
-     print("How many pizzas would you like to order?");
-      double quantity=double.parse(stdin.readLineSync()!);
-      totalPrice = pizzaInfo['medium']! * quantity;
+         
+
+while (quantity == null) {
+  print("How many pizzas would you like to order?");
+  quantity = int.tryParse(stdin.readLineSync()!);
+
+  if (quantity == null) {
+    print("Please enter an integer.");
+  }
+}
       exit=false;
       break;
     case 'large':
-      print("How many pizzas would you like to order?");
-      double quantity=double.parse(stdin.readLineSync()!);
-      totalPrice = pizzaInfo['large']! * quantity;
+
+      int? quantity;
+
+while (quantity == null) {
+  print("How many pizzas would you like to order?");
+  quantity = int.tryParse(stdin.readLineSync()!);
+
+  if (quantity == null) {
+    print("Please enter an integer.");
+  }
+}
       exit=false;
       break;
     default:
@@ -46,5 +68,7 @@ void main (){
     
   }
   }
+
+  totalPrice = pizzaInfo[size]! * quantity!;
   print("The total price for your order is: \$${totalPrice}");
 }
